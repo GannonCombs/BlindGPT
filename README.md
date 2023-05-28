@@ -26,5 +26,3 @@ Resuming a conversation, and maintaing context.
 Long textfile names overshoot the sidebar.
 
 Write tests.
-
-Push to github.
