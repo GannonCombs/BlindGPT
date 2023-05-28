@@ -1,26 +1,71 @@
-html,
 body {
-  padding: 0;
+  height: 100%;
+  font-family: 'Trebuchet MS', sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #84fab0, #8fd3f4);
+  color: white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 50px;
 }
 
-* {
-  box-sizing: border-box;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+input[type="text"] {
+  width: 300px;
+  padding: 5px;
+}
+
+input[type="submit"] {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+
+.you {
+  width: 300px;
+  background-color: #007BFF;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+.ai {
+  width: 300px;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+
+
+
+
+#new-chat-button {
+  cursor: pointer;
 }

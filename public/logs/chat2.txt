@@ -1,0 +1,8 @@
+You: What is three times two?
+AI: Six.
+You: What color is a stop sign?
+AI: Red.
+You: How many sides does it have?
+AI: It depends on the shape. A triangle has three sides, a square has four sides, a pentagon has five sides, and so on.
+You: What is the capital of Russia?
+AI: Moscow

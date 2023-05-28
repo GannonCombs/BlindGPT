@@ -1,0 +1,4 @@
+You: Hello, how are you?
+AI: I'm an AI, so I don't have feelings, but I'm functioning as expected. How can I assist you today?
+You: What's the weather like?
+AI: As an AI, I don't have access to real-time data unless it's provided to me. You can check a reliable weather website for that information.

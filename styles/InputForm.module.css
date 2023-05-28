@@ -1,0 +1,25 @@
+.inputForm {
+    position: relative;
+  }
+  
+  .inputGroup {
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .inputGroup input[type="text"] {
+    flex-grow: 1;
+  }
+
+  .recordButton {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  
+  .recordButton.recording::before {
+    content: '⏹️';
+  }
+

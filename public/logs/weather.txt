@@ -1,0 +1,4 @@
+You: What is the weather?
+AI: Hot.
+You: What is the capital of Italy?
+AI: Rome.

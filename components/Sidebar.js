@@ -1,0 +1,64 @@
+// components/Sidebar.js
+import React, { useEffect, useState, useContext } from 'react'
+import sidebarStyles from '../styles/Sidebar.module.css'
+import ChatContext from '../contexts/ChatContext';
+
+const Sidebar = () => {
+  const [logs, setLogs] = useState([])
+  const [deleteMode, setDeleteMode] = useState(null)
+  const { setCurrentChat } = useContext(ChatContext);
+
+  useEffect(() => {
+    fetch('/api/logs')
+      .then((response) => response.json())
+      .then((data) => setLogs(data))
+  }, [])
+
+  const handleDeleteClick = (log) => {
+    if (deleteMode === log) {
+      setDeleteMode(null)
+    } else {
+      setDeleteMode(log)
+    }
+  }
+
+  const deleteChat = (log) => {
+    console.log("Log: " , log)
+    fetch(`/api/deleteChat?chatName=${encodeURIComponent(log)}`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Chat deleted successfully') {
+        // Remove the chat from the logs state
+        setLogs(logs.filter(chat => chat !== log));
+      } else {
+        console.error('An error occurred:', data.message);
+      }
+    });
+  }
+  
+
+  return (
+    <div className={sidebarStyles.sidebar}>
+      <a onClick={() => setCurrentChat("$")}>New Chat ➕</a>
+      {logs.map((log) => (
+        <div key={log}>
+        <a onClick={() => setCurrentChat(log)}>
+          {log}
+          {deleteMode === log ? (
+            <>
+              <span onClick={() => deleteChat(log)}>✅</span>
+              <span onClick={() => handleDeleteClick(log)}>❌</span>
+            </>
+          ) : (
+            <span role="img" aria-label="Delete" onClick={() => handleDeleteClick(log)}>🗑️</span>
+          )}
+        </a>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export default Sidebar

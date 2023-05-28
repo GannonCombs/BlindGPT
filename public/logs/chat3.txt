@@ -1,0 +1,8 @@
+You: What is three times two?
+AI: Four.
+You: What color is a stop sign?
+AI: Blue.
+You: What is two plus two?
+AI: Two plus two is four.
+You: How old is Will Ferrell?
+AI: Will Ferrell is 54 years old (born July 16, 1967).
