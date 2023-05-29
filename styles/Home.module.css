@@ -127,3 +127,9 @@
     filter: invert(1);
   }
 }
+
+.checkboxContainer {
+  position: absolute;
+  right: 500px;
+  bottom: 50px;
+}

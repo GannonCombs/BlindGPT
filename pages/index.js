@@ -5,11 +5,12 @@ import Chat from '../components/Chat'
 import InputForm from '../components/InputForm'
 import { useContext, useEffect } from 'react'
 import ChatContext from '../contexts/ChatContext'
-// import textToSpeech from './api/convertTextToSpeech'
+import homeStyles from '../styles/Home.module.css'
 
 const HomePage = () => {
   const { currentChat } = useContext(ChatContext)
   const [conversation, setConversation] = useState([])
+  const [isTextToSpeechEnabled, setTextToSpeechEnabled] = useState(false);
 
   useEffect(() => {
     if (currentChat) {
@@ -106,9 +107,11 @@ const HomePage = () => {
     });
 
     // Convert the OpenAI response to speech and play it
-    const audioURL = await textToSpeech(answer);
-    const audio = new Audio(audioURL);
-    audio.play();
+    if (isTextToSpeechEnabled) {
+      const audioURL = await textToSpeech(answer);
+      const audio = new Audio(audioURL);
+      audio.play();
+    }
   }
 
   const textToSpeech = async (inputText) => {
@@ -154,7 +157,17 @@ const HomePage = () => {
     <Layout>
       <Chat conversation={conversation} />
       <InputForm onPromptSubmit={handlePromptSubmit} />
-    </Layout>
+    <div  className={homeStyles.checkboxContainer}><label>
+  Enable Text-to-Speech:
+  <input
+    type="checkbox"
+    checked={isTextToSpeechEnabled}
+    onChange={(e) => setTextToSpeechEnabled(e.target.checked)}
+  />
+</label>
+</div>
+
+</Layout>
   )
 }
 

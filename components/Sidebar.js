@@ -6,12 +6,17 @@ import ChatContext from '../contexts/ChatContext';
 const Sidebar = () => {
   const [logs, setLogs] = useState([])
   const [deleteMode, setDeleteMode] = useState(null)
-  const { setCurrentChat } = useContext(ChatContext);
+  const { currentChat, setCurrentChat } = useContext(ChatContext);
 
   useEffect(() => {
     fetch('/api/logs')
       .then((response) => response.json())
-      .then((data) => setLogs(data))
+      .then((data) => {
+        setLogs(data)
+        if (data.length > 0 && !currentChat) {
+          setCurrentChat(data[0]);
+        }
+      })
   }, [])
 
   const handleDeleteClick = (log) => {
@@ -44,7 +49,10 @@ const Sidebar = () => {
       <a onClick={() => setCurrentChat("$")}>New Chat ➕</a>
       {logs.map((log) => (
         <div key={log}>
-        <a onClick={() => setCurrentChat(log)}>
+        <a 
+        onClick={() => setCurrentChat(log)}
+        style={log === currentChat ? { color: '#8fd3f4' } : {}}
+        >
           <div>{log}</div>
           {deleteMode === log ? (
             <>
