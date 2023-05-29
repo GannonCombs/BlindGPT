@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const { prompt } = req.body;
 
   const configuration = new Configuration({
-    apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 

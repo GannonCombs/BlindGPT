@@ -6,3 +6,9 @@ You: What is two plus two?
 AI: Two plus two is four.
 You: How old is Will Ferrell?
 AI: Will Ferrell is 54 years old (born July 16, 1967).
+You: How tall was George Washington?
+AI: George Washington was 6 feet 2 inches (188 cm) tall.
+You: How tall is Jet Li?
+AI: Jet Li is 5 feet 6 inches (1.68 m) tall.
+You: How tall is Jet Li?
+AI: Jet Li is 5 feet 6 inches (1.68 m) tall.

@@ -5,7 +5,7 @@ import Chat from '../components/Chat'
 import InputForm from '../components/InputForm'
 import { useContext, useEffect } from 'react'
 import ChatContext from '../contexts/ChatContext'
-
+// import textToSpeech from './api/convertTextToSpeech'
 
 const HomePage = () => {
   const { currentChat } = useContext(ChatContext)
@@ -36,6 +36,7 @@ const HomePage = () => {
 
   const startNewChat = () => {
     console.log('Starting new chat...')
+
     setConversation([])
   }
 
@@ -103,7 +104,31 @@ const HomePage = () => {
         isNewChat,
       }),
     });
+
+    // Convert the OpenAI response to speech and play it
+    const audioURL = await textToSpeech(answer);
+    const audio = new Audio(audioURL);
+    audio.play();
   }
+
+  const textToSpeech = async (inputText) => {
+    const response = await fetch('/api/convertTextToSpeech', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ inputText }),
+    });
+  
+    if (!response.ok) {
+      throw new Error('An error occurred while converting text to speech.');
+    }
+  
+    const audioData = await response.arrayBuffer();
+    const blob = new Blob([audioData], { type: 'audio/mpeg' });
+    const url = URL.createObjectURL(blob);
+    return url;
+  };
 
  
 

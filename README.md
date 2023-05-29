@@ -18,8 +18,6 @@ Load a chat to start, instead of a blank screen.
 
 Whisper speech to text.
 
-Elevenlabs text to speech.
-
-Resuming a conversation, and maintaing context.
+Resuming a conversation, and maintaining context.
 
 Write tests.
