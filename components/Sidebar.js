@@ -45,7 +45,7 @@ const Sidebar = () => {
       {logs.map((log) => (
         <div key={log}>
         <a onClick={() => setCurrentChat(log)}>
-          {log}
+          <div>{log}</div>
           {deleteMode === log ? (
             <>
               <span onClick={() => deleteChat(log)}>✅</span>

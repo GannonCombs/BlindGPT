@@ -12,8 +12,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
-Todo list:
+## Todo list:
 
 Load a chat to start, instead of a blank screen.
 
@@ -22,7 +21,5 @@ Whisper speech to text.
 Elevenlabs text to speech.
 
 Resuming a conversation, and maintaing context.
-
-Long textfile names overshoot the sidebar.
 
 Write tests.
