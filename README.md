@@ -14,10 +14,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Todo list:
 
-Load a chat to start, instead of a blank screen.
-
-Whisper speech to text.
-
 Resuming a conversation, and maintaining context.
 
 Write tests.

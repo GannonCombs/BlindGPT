@@ -10,7 +10,7 @@ import homeStyles from '../styles/Home.module.css'
 const HomePage = () => {
   const { currentChat } = useContext(ChatContext)
   const [conversation, setConversation] = useState([])
-  const [isTextToSpeechEnabled, setTextToSpeechEnabled] = useState(false);
+  const [isTextToSpeechEnabled, setTextToSpeechEnabled] = useState(false)
 
   useEffect(() => {
     if (currentChat) {
@@ -28,11 +28,11 @@ const HomePage = () => {
   const loadChat = () => {
     console.log('Loading chat...')
     fetch(`/api/loadChat?chatName=${currentChat}`)
-    .then(response => response.json())
-    .then(data => {
-      setConversation(data)
-      console.log("Loaded convo: " , data)
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        setConversation(data)
+        console.log('Loaded convo: ', data)
+      })
   }
 
   const startNewChat = () => {
@@ -42,33 +42,32 @@ const HomePage = () => {
   }
 
   const queryGpt = async (prompt) => {
-
     const response = await fetch('/api/queryGpt', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ prompt }),
-    });
+    })
 
-    const data = await response.json();
-    const answer = data.answer;
+    const data = await response.json()
+    const answer = data.answer
     updateChat(prompt, answer)
-    
   }
 
   const updateChat = async (prompt, answer) => {
     //add to array
-    const newConversation = [...conversation, prompt, answer];
-    console.log("new convo:" , newConversation)
+    const newConversation = [...conversation, prompt, answer]
+    console.log('new convo:', newConversation)
     setConversation(newConversation)
 
-    var newFileName = "";
+    var newFileName = ''
 
-    if(currentChat == "$") { //new chat
+    if (currentChat == '$') {
+      //new chat
       //summarize (to get file name)
       const summary = await summarize(prompt)
-      console.log("Summary: " , summary)
+      console.log('Summary: ', summary)
 
       //create new text file
       const response = await fetch('/api/createChat', {
@@ -80,16 +79,16 @@ const HomePage = () => {
           newConversation,
           summary,
         }),
-      });
-      const data = await response.json();
-      newFileName = data.fileName;
+      })
+      const data = await response.json()
+      newFileName = data.fileName
     }
 
-    var chatName = currentChat;
-    var isNewChat = false;
-    if( newFileName != "") {
-      chatName = newFileName;
-      isNewChat = true;
+    var chatName = currentChat
+    var isNewChat = false
+    if (newFileName != '') {
+      chatName = newFileName
+      isNewChat = true
     }
 
     //update text file
@@ -104,13 +103,13 @@ const HomePage = () => {
         answer,
         isNewChat,
       }),
-    });
+    })
 
     // Convert the OpenAI response to speech and play it
     if (isTextToSpeechEnabled) {
-      const audioURL = await textToSpeech(answer);
-      const audio = new Audio(audioURL);
-      audio.play();
+      const audioURL = await textToSpeech(answer)
+      const audio = new Audio(audioURL)
+      audio.play()
     }
   }
 
@@ -121,31 +120,28 @@ const HomePage = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ inputText }),
-    });
-  
-    if (!response.ok) {
-      throw new Error('An error occurred while converting text to speech.');
-    }
-  
-    const audioData = await response.arrayBuffer();
-    const blob = new Blob([audioData], { type: 'audio/mpeg' });
-    const url = URL.createObjectURL(blob);
-    return url;
-  };
+    })
 
- 
+    if (!response.ok) {
+      throw new Error('An error occurred while converting text to speech.')
+    }
+
+    const audioData = await response.arrayBuffer()
+    const blob = new Blob([audioData], { type: 'audio/mpeg' })
+    const url = URL.createObjectURL(blob)
+    return url
+  }
 
   const summarize = async (prompt) => {
-
     const response = await fetch('/api/summarize', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ prompt }),
-    });
-    const data = await response.json();
-    return data.summary;
+    })
+    const data = await response.json()
+    return data.summary
   }
 
   const handlePromptSubmit = (prompt) => {
@@ -153,21 +149,33 @@ const HomePage = () => {
     queryGpt(prompt)
   }
 
+
+  const handleCheckboxChange  = (event) => {
+    //Don't want to risk a race condition on state updating,
+    //so instead of checking if enabled is now checked,
+    //I check that it had been false.
+    if(!isTextToSpeechEnabled) {
+      const audio = new Audio("Blind.wav")
+      audio.play()
+    }
+    setTextToSpeechEnabled(event.target.checked);
+  }
+
   return (
     <Layout>
       <Chat conversation={conversation} />
       <InputForm onPromptSubmit={handlePromptSubmit} />
-    <div  className={homeStyles.checkboxContainer}><label>
-  Enable Text-to-Speech:
-  <input
-    type="checkbox"
-    checked={isTextToSpeechEnabled}
-    onChange={(e) => setTextToSpeechEnabled(e.target.checked)}
-  />
-</label>
-</div>
-
-</Layout>
+      <div className={homeStyles.checkboxContainer}>
+        <label>
+    Enable Text-to-Speech:
+    <input
+      type="checkbox"
+      checked={isTextToSpeechEnabled}
+      onChange={handleCheckboxChange}
+    />
+  </label>
+      </div>
+    </Layout>
   )
 }
 

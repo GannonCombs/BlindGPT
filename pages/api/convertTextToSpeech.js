@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   const { inputText } = req.body;
 
   // Set the ID of the voice to be used.
-  const VOICE_ID = '21m00Tcm4TlvDq8ikWAM';
+  const VOICE_ID = 'pNInz6obpgDQGcFmaJgB';
 
   // Set options for the API request.
   const options = {
