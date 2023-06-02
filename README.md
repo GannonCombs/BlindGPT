@@ -16,4 +16,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Resuming a conversation, and maintaining context.
 
+Convert Whisper API to large model.
+
 Write tests.

@@ -7,9 +7,11 @@ const MicRecorder = require('mic-recorder-to-mp3')
 const InputForm = ({ onPromptSubmit }) => {
   const [prompt, setPrompt] = useState('')
   const [isRecording, setIsRecording] = useState(false)
-  const [recorder, setRecorder] = useState(new MicRecorder({
-    bitRate: 128,
-  }))
+  const [recorder, setRecorder] = useState(
+    new MicRecorder({
+      bitRate: 128,
+    }),
+  )
 
   const handlePromptChange = (event) => {
     setPrompt(event.target.value)
@@ -28,7 +30,7 @@ const InputForm = ({ onPromptSubmit }) => {
         .stop()
         .getMp3()
         .then(([buffer, blob]) => {
-         //Create an mp3 file
+          //Create an mp3 file
           const file = new File(buffer, 'voiceRecording.mp3', {
             type: blob.type,
             lastModified: Date.now(),
@@ -37,7 +39,7 @@ const InputForm = ({ onPromptSubmit }) => {
           //play it back if you want to
           // const player = new Audio(URL.createObjectURL(file))
           // player.play()
-          console.log("Type of audio: " , typeof(file))
+          console.log('Type of audio: ', typeof file)
           speechToText(file)
         })
         .catch((e) => {
@@ -59,33 +61,34 @@ const InputForm = ({ onPromptSubmit }) => {
   }
 
   const speechToText = async (audioFile) => {
-    console.log("Going to convert speech...")
+    console.log('Going to convert speech...')
 
-    const formData = new FormData();
-    formData.append('model', 'whisper-1');
-    formData.append('file', audioFile);
+    const formData = new FormData()
+    formData.append('model', 'whisper-1')
+    formData.append('file', audioFile)
 
-    const response = await fetch('https://api.openai.com/v1/audio/transcriptions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-    },
-    body: formData,
-  });
-  
+    const response = await fetch(
+      'https://api.openai.com/v1/audio/transcriptions',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+        },
+        body: formData,
+      },
+    )
+
     if (!response.ok) {
-      throw new Error('An error occurred while converting text to speech.');
+      throw new Error('An error occurred while converting text to speech.')
     }
-  
-   
-    const data = await response.json();
-    
-    const transcript = data.text;
-    console.log("Transcribed data: " , transcript)
+
+    const data = await response.json()
+
+    const transcript = data.text
+    console.log('Transcribed data: ', transcript)
 
     setPrompt(transcript)
-  };
-
+  }
 
   return (
     <form className={inputFormStyles.inputForm} onSubmit={handlePromptSubmit}>
@@ -101,9 +104,25 @@ const InputForm = ({ onPromptSubmit }) => {
           placeholder="Type your prompt..."
         />
 
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleRecordClick}>
-          {isRecording ? <FaStopCircle /> : <FaMicrophone />}
+        <button className={inputFormStyles.funButton} type="submit">
+          <span>Submit</span>
+          <svg aria-hidden>
+            <circle></circle>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          onClick={handleRecordClick}
+          className={`${inputFormStyles.button} ${inputFormStyles.object}`}
+        >
+          <div className={inputFormStyles.outline}></div>
+          <div className={inputFormStyles.outline} id="delayed"></div>
+          {isRecording ? (
+            <FaStopCircle size={50} />
+          ) : (
+            <FaMicrophone size={50} />
+          )}
         </button>
       </div>
     </form>

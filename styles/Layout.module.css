@@ -15,7 +15,15 @@
     top: 0;
     left: 25%; /* This centers the banner */
     z-index: 1; /* This ensures the banner stays on top */
-    text-align: center;
+    display: flex; /* This will make the items inside the banner line up horizontally */
+    justify-content: center; /* This will center the items horizontally */
+    align-items: center; /* This will center the items vertically */
+  }
+
+.bannerContent {
+  display: flex;
+  align-items: center; /* This will vertically align the items in the middle */
+  gap: 10px; /* This will add a 10px gap between the items */
 }
 
 .chatContainer {
