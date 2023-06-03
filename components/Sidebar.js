@@ -17,7 +17,7 @@ const Sidebar = () => {
           setCurrentChat(data[0]);
         }
       })
-  }, [])
+  }, [currentChat])
 
   const handleDeleteClick = (log) => {
     if (deleteMode === log) {

@@ -8,7 +8,7 @@ import ChatContext from '../contexts/ChatContext'
 import homeStyles from '../styles/Home.module.css'
 
 const HomePage = () => {
-  const { currentChat } = useContext(ChatContext)
+  const { currentChat, setCurrentChat } = useContext(ChatContext)
   const [conversation, setConversation] = useState([])
   const [isTextToSpeechEnabled, setTextToSpeechEnabled] = useState(false)
 
@@ -23,7 +23,6 @@ const HomePage = () => {
       }
     }
   }, [currentChat])
-
 
   const loadChat = () => {
     console.log('Loading chat...')
@@ -77,12 +76,12 @@ const HomePage = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          newConversation,
           summary,
         }),
       })
       const data = await response.json()
       newFileName = data.fileName
+      setCurrentChat(newFileName)
     }
 
     var chatName = currentChat

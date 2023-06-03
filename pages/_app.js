@@ -3,10 +3,10 @@ import ChatContext from '../contexts/ChatContext'
 import { useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
-  const [currentChat, setCurrentChat] = useState(null)
+  const [currentChat, setCurrentChat] = useState(null);
 
   return (
-    <ChatContext.Provider value={{ currentChat, setCurrentChat }}>
+    <ChatContext.Provider value={{ currentChat, setCurrentChat}}>
       <Component {...pageProps} />
     </ChatContext.Provider>
   )
