@@ -67,6 +67,7 @@ const HomePage = () => {
       //new chat
       //summarize (to get file name)
       const summary = await summarize(prompt)
+      console.log('newConversation: ', newConversation)
       console.log('Summary: ', summary)
 
       //create new text file
