@@ -92,7 +92,7 @@ const InputForm = ({ onPromptSubmit }) => {
 
   return (
     <form className={inputFormStyles.inputForm} onSubmit={handlePromptSubmit}>
-      <label htmlFor="user_input">You:</label>
+      <label htmlFor="user_input" className={inputFormStyles.spaceLabel}>Type or speak your prompt:</label>
       <br />
       <div className={inputFormStyles.inputGroup}>
         <input

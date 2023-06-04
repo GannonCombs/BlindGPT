@@ -11,3 +11,12 @@ AI: 1. Gina Rinehart
 10. Lindsay Fox
 You: What is the capital of Ukraine?
 AI: The capital of Ukraine is Kyiv (also spelled Kiev).
+You: What are some of the next steps fusion technology needs to take to be viable?
+AI: 1. Developing more efficient and cost-effective fusion reactors. 
+2. Improving the understanding of plasma physics and developing better control systems for the plasma. 
+3. Developing materials that can withstand the extreme temperatures and pressures of a fusion reaction. 
+4. Developing better methods for extracting energy from the reaction, such as magnetic confinement or inertial confinement. 
+5. Finding ways to reduce the cost of building and operating a fusion reactor, such as through improved manufacturing techniques or new sources of funding. 
+6. Investigating alternative fuels for fusion reactions, such as deuterium-tritium or helium-3, which may be more efficient than traditional hydrogen-boron reactions.
+You: What is deuterium tritium exactly?
+AI: Deuterium and tritium are both isotopes of hydrogen. Deuterium is a stable isotope with one proton and one neutron in its nucleus, while tritium is an unstable isotope with one proton and two neutrons in its nucleus. Deuterium is found naturally in the Earth's oceans, while tritium is produced artificially in nuclear reactors. Both deuterium and tritium are used as fuel for nuclear fusion reactions, which can generate large amounts of energy.
