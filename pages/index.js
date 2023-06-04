@@ -1,5 +1,5 @@
 // pages/index.js
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Layout from '../components/Layout'
 import Chat from '../components/Chat'
 import InputForm from '../components/InputForm'
@@ -11,6 +11,7 @@ const HomePage = () => {
   const { currentChat, setCurrentChat } = useContext(ChatContext)
   const [conversation, setConversation] = useState([])
   const [isTextToSpeechEnabled, setTextToSpeechEnabled] = useState(false)
+  const previousChat = useRef(currentChat);
 
   useEffect(() => {
     if (currentChat) {
@@ -18,9 +19,13 @@ const HomePage = () => {
       console.log('Current chat: ', currentChat)
       if (currentChat == '$') {
         startNewChat()
+      } else if (previousChat.current === '$') {
+        previousChat.current = currentChat;
+        return;
       } else {
         loadChat()
       }
+      previousChat.current = currentChat;
     }
   }, [currentChat])
 

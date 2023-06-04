@@ -1,0 +1,13 @@
+You: List the top ten wealthiest people in Australia.
+AI: 1. Gina Rinehart 
+2. Anthony Pratt 
+3. Harry Triguboff 
+4. Frank Lowy 
+5. Andrew Forrest 
+6. James Packer 
+7. Kerr Neilson 
+8. John Gandel 
+9. Michael Hintze 
+10. Lindsay Fox
+You: What is the capital of Ukraine?
+AI: The capital of Ukraine is Kyiv (also spelled Kiev).
