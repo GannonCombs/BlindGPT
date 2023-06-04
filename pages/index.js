@@ -27,11 +27,13 @@ const HomePage = () => {
   const loadChat = () => {
     console.log('Loading chat...')
     fetch(`/api/loadChat?chatName=${currentChat}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setConversation(data)
-        console.log('Loaded convo: ', data)
-      })
+  .then((response) => response.json())
+  .then((data) => {
+    
+    setConversation(data);
+    console.log('Loaded convo: ', data);
+  });
+
   }
 
   const startNewChat = () => {
@@ -56,7 +58,8 @@ const HomePage = () => {
 
   const updateChat = async (prompt, answer) => {
     //add to array
-    const newConversation = [...conversation, prompt, answer]
+    const newConversation = [...conversation, `You: ${prompt}`, `AI: ${answer}`];
+
     console.log('new convo:', newConversation)
     setConversation(newConversation)
 

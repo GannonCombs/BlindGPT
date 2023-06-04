@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     model: 'text-davinci-003',
     prompt: prompt + '\nSummarize the conversation above. The result should be at most thirty characters:',
     temperature: 0.3,
-    max_tokens: 30,
+    max_tokens: 7,
   });
 
   const summary = response.data.choices[0].text;
