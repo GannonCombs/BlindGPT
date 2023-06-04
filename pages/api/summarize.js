@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: prompt + '\nSummarize the conversation above. The result should be at most thirty characters:',
+    prompt: prompt + '\nSummarize the conversation above. The result should be at most thirty characters. Be very sure not to include any contextual fluff phrases, such as "person 1 asked person 2" or "this conversation involves".',
     temperature: 0.3,
     max_tokens: 7,
   });

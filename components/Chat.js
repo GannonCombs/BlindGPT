@@ -6,7 +6,8 @@ const Chat = ({ conversation }) => (
   <div className={chatStyles.chat}>
     {conversation.map((message, i) => (
       <p key={i} className={i % 2 === 0 ? 'you' : 'ai'}>
-        <strong>{i % 2 === 0 ? 'You' : 'AI'}:</strong> {message}
+        {/* <strong>{i % 2 === 0 ? 'You' : 'AI'}:</strong> */}
+         {message}
       </p>
     ))}
   </div>
