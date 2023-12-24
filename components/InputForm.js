@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import inputFormStyles from '../styles/InputForm.module.css'
 import { FaMicrophone, FaStopCircle } from 'react-icons/fa'
 const MicRecorder = require('mic-recorder-to-mp3')
+import { saveAs } from 'file-saver';
 
 const InputForm = ({ onPromptSubmit }) => {
   const [prompt, setPrompt] = useState('')
@@ -37,9 +38,22 @@ const InputForm = ({ onPromptSubmit }) => {
           })
 
           //play it back if you want to
-          // const player = new Audio(URL.createObjectURL(file))
-          // player.play()
+          const player = new Audio(URL.createObjectURL(file))
+          player.play()
           console.log('Type of audio: ', typeof file)
+
+          //save the audio file
+          var FileSaver = require('file-saver');
+          const now = new Date();
+          const timestamp = now.toISOString().replace(/[-:.]/g, '');
+          const filename = `_${timestamp}.wav`;
+          FileSaver.saveAs(blob, `blindGpt_log${filename}`);
+          
+          //attempt to save audio file without popup
+          //doesn't currently work
+          //saveAudio(file)
+
+          //convert audio to text
           speechToText(file)
         })
         .catch((e) => {
@@ -59,6 +73,27 @@ const InputForm = ({ onPromptSubmit }) => {
     }
     setIsRecording(!isRecording)
   }
+
+  const saveAudio = async (audioFile) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', audioFile);
+      const response = await fetch('/api/saveAudio', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (!response.ok) {
+        throw new Error('File upload failed');
+      }
+  
+      console.log('File uploaded successfully');
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+
+  }
+
 
   const speechToText = async (audioFile) => {
     console.log('Going to convert speech...')

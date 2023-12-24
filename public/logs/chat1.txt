@@ -4,3 +4,44 @@ You: What's the weather like?
 AI: As an AI, I don't have access to real-time data unless it's provided to me. You can check a reliable weather website for that information.
 You: How many seconds are in 116 years old?
 AI: 116 years old is equal to 3,814,400,000 seconds.
+You: Write me a rap about the show Succession.
+AI: Verse 1:
+The Roys are a family of power and wealth,
+Their drama is something that's hard to conceal.
+The show Succession is a must-see,
+It's full of twists and turns that will keep you on your feet.
+
+Chorus: 
+Succession, it's the show that you need to see, 
+It'll keep you guessing 'til the very end. 
+The Roys are a family with secrets to hide, 
+And their drama will keep you entertained all night. 
+
+Verse 2: 
+The Roys have money and power in their hands, 
+But they're still struggling to make their own plans. 
+They
+You: How tall was George Washington?
+AI: George Washington was 6 feet 2 inches (188 cm) tall.
+You: Write me a poem about the revolutionary war.
+AI: The drums of war beat loud and clear,
+The call to arms was heard far and near.
+The brave men of the colonies,
+Rallied together to fight for their homes.
+
+They fought for freedom and liberty,
+For a chance to live in harmony.
+Their courage and strength was unyielding,
+Their cause was just and appealing. 
+
+The battles were fierce and long, 
+But the patriots stayed strong. 
+They fought with courage and pride, 
+To keep their freedom alive. 
+
+Though the war was hard-fought, 
+In the end they were not distraught. 
+For they had won their independence, 
+And a new nation
+You: Take a guess, be creative, and tell us what the year 2050 looks like.
+AI: In the year 2050, the world has made great strides in tackling climate change and environmental sustainability. Renewable energy sources such as solar, wind, and geothermal are now the primary sources of energy for most countries. Automation and artificial intelligence have revolutionized many industries, leading to increased efficiency and productivity. Self-driving cars are commonplace, allowing people to travel quickly and safely. The internet of things has connected all aspects of life, from homes to businesses to cities. Virtual reality is used for entertainment, education, and even medical treatments. People are living longer due to advances in healthcare technology and treatments. Global poverty has been drastically reduced due to improved access to education and resources. In short, the world in 2050 is a much better place

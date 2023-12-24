@@ -1,0 +1,7 @@
+You: How big is the circumference of the Earth?
+AI: The circumference of the Earth is approximately 40,075 kilometers (24,901 miles).
+You: Narrate a passage from Alice in Wonderland.
+AI: Alice was feeling very tired and sleepy, so she decided to take a nap. She found a cozy spot under a tree and curled up for a nap. Suddenly, she heard a strange noise coming from the tree above her. She opened her eyes to find a white rabbit with pink eyes standing on its hind legs, looking at her with an expression of surprise.
+
+"Oh my! You startled me!" said the rabbit. "I'm late! I'm late! For a very important date!" With that, the rabbit hopped away in a hurry. 
+Alice was so surprised that she jumped up and followed the rabbit down its hole. She tumbled down and down until she landed in a long hallway filled with doors of all
